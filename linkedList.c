@@ -52,7 +52,7 @@ void insertAtPos(int n,int data){
     temp1->next = temp;
 }
 
-void reverseListIteratively(struct Node* head){
+void reverseListIteratively(){
     struct Node *current=head,*prev=0,*next;
     
     while(current!=0){
@@ -118,9 +118,13 @@ int main(void)
     insertAtPos(5,9);
     insertAtPos(9,100);
     printList();
+    reverseListIteratively();
+    printList();
+    reverseListRecursively(head);
+    printList();
     // printForwardListRecursively(head);
     // printf("\n");
-    printReverseListRecursively(head);
+    // printReverseListRecursively(head);
 	return 0;
 }
 
