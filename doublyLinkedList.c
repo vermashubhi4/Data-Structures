@@ -101,10 +101,18 @@ void deleteAtEnd(){
 void deleteAtPos(int n){
     struct Node *temp =  head,*temp1;
     int i=0;
+    if( n = 0){
+       printf("Error: Invalid Pos\n");
+       return;
+    }
     while(i<n-2 && temp!=0){
         temp=temp->next;
         i++;
     }
+   if(temp == 0){
+       printf("Error: Invalid Pos\n");
+    return;
+   }
    temp1 = temp->next;
    temp->next = temp1->next;
    temp1->next->prev=temp;

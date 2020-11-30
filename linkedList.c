@@ -95,13 +95,50 @@ void printReverseListRecursively(struct Node *p){
 }
 
 void printList(){
-    struct Node *temp =head;
+    struct Node *temp = head;
     while(temp!=0){
         printf("%d ", temp->data);
         temp =  temp->next;
     }
     printf("\n");
 }
+
+void deletAtBeg(){
+   struct Node *temp = head;
+   head=temp->next;
+   free(temp);
+}
+
+void deleteAtEnd(){
+    struct Node *temp = head,*temp1;
+    while(temp->next != 0){
+        temp1=temp;
+        temp = temp->next;
+    }
+    temp1->next =0;
+    free(temp);
+}
+
+void deleteAtPos(int n){
+    struct Node *temp = head,*temp1;
+    int i=0;
+    if(n==0){
+        printf("Error : Invalid Postion");
+        return;
+    }
+    while(i<n-2){
+        temp=temp->next;
+        i++;
+    }
+    if(temp == 0 ){
+        printf("Error : Invalid Position");
+        return;
+    }
+    temp1 = temp->next;
+    temp->next = temp1->next;
+    free(temp1);
+}
+
 int main(void) 
 {
     // insertAtBeg(2);
@@ -125,6 +162,9 @@ int main(void)
     // printForwardListRecursively(head);
     // printf("\n");
     // printReverseListRecursively(head);
+    // deleteAtEnd();
+    deleteAtPos(6);
+    printList();
 	return 0;
 }
 
