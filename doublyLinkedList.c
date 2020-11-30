@@ -80,6 +80,36 @@ void printListReverse(){
     }
     printf("\n");
 }
+
+void deleteAtBeg(){
+    struct Node *temp = head;
+    head=temp->next;
+    if(head!=0){
+        head->prev = 0;
+    }
+    free(temp);
+}
+void deleteAtEnd(){
+    struct Node *temp =  head,*temp1;
+    while(temp->next!=0){
+        temp1=temp;
+        temp=temp->next;
+    }
+    temp1->next = 0;
+    free(temp);
+}
+void deleteAtPos(int n){
+    struct Node *temp =  head,*temp1;
+    int i=0;
+    while(i<n-2 && temp!=0){
+        temp=temp->next;
+        i++;
+    }
+   temp1 = temp->next;
+   temp->next = temp1->next;
+   temp1->next->prev=temp;
+   free(temp1);
+}
 int main(void) 
 {
     insertAtEnd(2);
@@ -91,6 +121,8 @@ int main(void)
     insertAtPos(3,7);
     printListForward();
     printListReverse();
+    deleteAtPos(5);
+    printListForward();
 	return 0;
 }
 
